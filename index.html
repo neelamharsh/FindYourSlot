@@ -175,7 +175,8 @@ $('.searchByDist').on('click',
                         if (status) {
                             var sessions = data.sessions ? data.sessions : [];
                             if (sessions) {
-                                for (var i = 0; i <= sessions.length; i++) {
+                                if(sessions.length  == 0) alert('No record found');
+                                for (var i = 0; i < sessions.length; i++) {
                                     var classname = "info";
                                     if (i % 2 == 0) {
                                         classname = "success"
@@ -185,6 +186,7 @@ $('.searchByDist').on('click',
                                         .name + "</td><td>" + sessions[i].pincode + "</td><td>" + sessions[i].date + "</td><td>" +  sessions[i].available_capacity_dose1 + "</td><td>" +
                                         sessions[i].available_capacity_dose2 + "</td><td>" + sessions[i].vaccine + "</td><td>" + sessions[i].min_age_limit + "</td></tr>")
                                 }
+                                
                             }
                             else alert('No Record Found');
                         } else {
