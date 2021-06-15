@@ -164,8 +164,8 @@ $('.searchByDist').on('click',
             $(".searchBtn1").click(function () {
                 $("tbody").empty();
                 var pin = $('#pin').val();
-                if (pin == '' || pin == undefined) {
-                    alert('please enter pin code');
+                if (pin == '' || pin == undefined || pin.length!=6) {
+                    alert('please enter valid pin code');
                     return;
                 }
                 
@@ -188,7 +188,6 @@ $('.searchByDist').on('click',
                                 }
                                 
                             }
-                            else alert('No Record Found');
                         } else {
                             alert('error');
                         }
