@@ -17,11 +17,18 @@
 
         main
         {
+            width: 100%;
             background-color: whitesmoke;
             min-height: 800px;
         }
 
-        .searchBtn1,.searchBtn2
+        .main-1
+        {
+            width: 100%;
+            padding: 50px;
+        }
+
+        .searchBtn1,.BookNow
         {
             border: 1px solid black;
             background-color: rgba(0, 46, 44, 0.548);
@@ -29,6 +36,11 @@
             padding: 10px;
             font-weight: bold;
             color: white;
+        }
+
+        .BookNow
+        {
+            width: 100%;
         }
         
         input[type="number"]
@@ -71,6 +83,7 @@
             width: 100%;
             text-align: center;
             color:rgba(0, 0, 0, 0.74);
+            font-family: cursive;
             margin: 10px; 
         }
 
@@ -135,11 +148,12 @@
                 </tbody>
             </table>
         </div>
-
+        <button class="BookNow">Book Now</button>
         </div>
         </main>
 
         <script>
+
 
 
 $('.searchByPin').on('click',
@@ -149,13 +163,9 @@ $('.searchByPin').on('click',
   }
 );
 
-$('.searchByDist').on('click',
-  function() {
-    $('.byPin').hide();
-    $('.byDist').show();
-  }
-);
-
+$(".BookNow").click(function(){
+        window.open("https://www.cowin.gov.in/home").attr('target','_blank');
+    })
 
 
             var date = new Date();
