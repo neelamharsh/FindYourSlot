@@ -54,6 +54,14 @@
             border: rgba(28, 31, 26, 0.685) 3px solid;
         }
 
+        input[type="date"]
+        {
+            margin: 10px 0px;
+            padding: 5px;
+            border-radius: 5px;
+            border: rgba(28, 31, 26, 0.685) 3px solid;
+        }
+
         p
         {
             margin: 40px 10px 80px 0px;
@@ -123,12 +131,12 @@
         </header>
 
         <main>
-            <div class="main-1">
-            
+            <div class="main-1">                                 
             <div class="byPin">  
             <p> Check your nearest vaccination center and slots availability. </p>
             <div class="pin">Enter Your Pin :</div> 
-            <input type="number" id="pin">
+            <input type="number" id="pin" required>
+            <input type="date" id="myDate" required>
             <button class="searchBtn1" id="search">Search</button>
             </div> 
 
@@ -166,19 +174,24 @@ $('.searchByPin').on('click',
 
 $(".BookNow").click(function(){
         window.open("https://www.cowin.gov.in/home").attr('target','_blank');
-    })
+    });
 
-
-            var date = new Date();
-            var today = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
             $(".searchBtn1").click(function () {
+                
+            var flag = $('#myDate').val();
+            var dates = flag.substring(8, 10);
+            var month = flag.substring(5, 7);
+            var year = flag.substring(0, 4);
+
+            var today = dates + "-" + month + "-" + year;
+
                 $("tbody").empty();
                 var pin = $('#pin').val();
                 if (pin == '' || pin == undefined || pin.length!=6) {
                     alert('please enter valid pin code');
                     return;
                 }
-                
+
                 $.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin +
                     "&date=" + today,
                     function (data, status) {
